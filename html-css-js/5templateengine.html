@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Web Developer</title>
+    <script src="http://code.jquery.com/jquery-2.1.4.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
+    <link rel="stylesheet" href="./5templateengine.css" />
+
+    <script id="entry-template" type="text/x-handlebars-template">
+      <ul class="topics_list">
+        {{#each topics}}
+          <li>{{this}}</li>
+        {{/each}}
+      </ul>
+    </script>
+
+    <script type="text/javascript">
+      $(window).load(function () {
+        var source = $("#entry-template").html();
+        var template = Handlebars.compile(source);
+        const topics = [
+          "HTML, CSS and JS",
+          "FrontEnd - CSS framework (BootStrap, Tailwind CSS ..etc",
+          "Templating System",
+          "Programming Language",
+          "Backend Framework (Django, Flask, Spring, ExpressJs)",
+          "Database (SQLAlchemy, Hibernate)",
+        ];
+        var html = template({ topics });
+        $("#content").append(html);
+      });
+    </script>
+  </head>
+  <body>
+    <h1>Web developer career path</h1>
+    <div class="list" id="content"></div>
+  </body>
+</html>
